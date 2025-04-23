@@ -1,8 +1,9 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Login() {
-  return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    return (
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     entre!
@@ -55,13 +56,13 @@ function Login() {
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     ainda não tem uma conta?{' '}
-                    <a href="#" className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
+                    <NavLink to={"/register"} className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
                         cadastre-se aqui
-                    </a>
+                    </NavLink>
                 </p>
             </div>
         </div>
-  )
+    )
 }
 
 export default Login

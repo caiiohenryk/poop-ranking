@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Register() {
     return (
@@ -68,9 +69,9 @@ function Register() {
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     já tem uma conta?{' '}
-                    <a href="#" className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
+                    <NavLink to={'/login'} className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
                         faça login aqui
-                    </a>
+                    </NavLink>
                 </p>
             </div>
         </div>
