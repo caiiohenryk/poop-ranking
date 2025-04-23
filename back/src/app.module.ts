@@ -7,6 +7,8 @@ import { AuthModule } from '@auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthController } from '@auth/auth.controller';
 import { PoopModule } from '@poop/poop.module';
+import { Poop } from "@poop/poop.model";
+import { PoopController } from "@poop/poop.controller";
 
 @Module({
   imports: [
@@ -21,11 +23,11 @@ import { PoopModule } from '@poop/poop.module';
       username: 'postgres',
       password: 'root',
       database: 'poop-api',
-      entities: [User],
+      entities: [User, Poop],
       synchronize: true // Lembra de mudar pra false quando for pra deploy
     })
     ,UserModule, AuthModule, PoopModule],
-  controllers: [UserController, AuthController],
+  controllers: [UserController, AuthController, PoopController],
   providers: [],
 })
 export class AppModule {}
