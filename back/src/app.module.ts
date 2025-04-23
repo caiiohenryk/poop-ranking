@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@user/user.model';
 import { UserController } from '@user/user.controller';
 import { AuthModule } from '@auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from "@nestjs/config";
 import { AuthController } from '@auth/auth.controller';
 import { PoopModule } from '@poop/poop.module';
 import { Poop } from "@poop/poop.model";
@@ -16,17 +16,25 @@ import { PoopController } from "@poop/poop.controller";
       isGlobal: true,
       envFilePath: '.env'
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'root',
-      database: 'poop-api',
-      entities: [User, Poop],
-      synchronize: true // Lembra de mudar pra false quando for pra deploy
-    })
-    ,UserModule, AuthModule, PoopModule],
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DB_HOST'),
+        port: +configService.get('DB_PORT'),
+        username: configService.get('DB_USERNAME'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_NAME'),
+        entities: [User, Poop],
+        synchronize: true, // Apenas para desenvolvimento!
+        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+      }),
+      inject: [ConfigService],
+    }),
+    UserModule,
+    AuthModule,
+    PoopModule
+  ],
   controllers: [UserController, AuthController, PoopController],
   providers: [],
 })
