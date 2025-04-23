@@ -22,7 +22,7 @@ export class AuthService {
     const compare = await bcrypt.compare(dto.password, findUser.password);
     if (!compare) return {message: `Senha inválida.`}
 
-    const payload = { id: findUser.id ,email: dto.email, hasActivePayment: findUser.hasActivePayment };
+    const payload = { id: findUser.id, email: dto.email };
     return {
       accessToken: this.jwtService.sign(payload)
     };

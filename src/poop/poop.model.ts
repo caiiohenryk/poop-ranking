@@ -13,7 +13,4 @@ export class Poop {
   @JoinColumn({name:'userId'})
   public userId: string;
 
-  @Column()
-  public userName: string;
-
 }
