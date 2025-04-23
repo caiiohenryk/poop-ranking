@@ -3,7 +3,7 @@ import { User } from "./user.model"
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as bcrypt from "bcrypt";
-import { CreateUserDto } from "@user/dto/create-user.dto";
+import { CreateUserDto } from "./dto/create-user.dto";
 
 @Injectable()
 export class UserService {
@@ -25,7 +25,6 @@ export class UserService {
       nome: dto.nome,
       email: dto.email,
       password: hashPassword,
-      hasActivePayment: false,
     });
     return this.userRepository.save(newUser);
   }
