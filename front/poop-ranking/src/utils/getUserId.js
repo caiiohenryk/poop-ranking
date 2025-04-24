@@ -12,10 +12,8 @@ export const getUserId = (token) => {
         );
 
         const payload = JSON.parse(jsonPayload);
-        console.log('Payload:', payload.id); // Adicione este log para depuração
         return payload.id || null;
     } catch (error) {
-        console.error('Erro ao decodificar o token:', error);
         return null;
     }
 }

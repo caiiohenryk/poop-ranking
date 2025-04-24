@@ -25,13 +25,11 @@ function Login() {
 
         try {
             const response = await instance.post('/auth/login', data)
-            console.log(response.data.accessToken)
             sessionStorage.setItem('token', response.data.accessToken);
             alert('Login realizado com sucesso!')
             navigate('/')
         } catch (error) {
             setErrorMessage('Erro ao fazer login. Por favor, tente novamente.')
-            console.error('Error logging in:', error)
         } finally {
             setIsLoading(false)
         }

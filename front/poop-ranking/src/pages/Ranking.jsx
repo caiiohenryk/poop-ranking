@@ -20,12 +20,10 @@ function Ranking() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            console.log(response.data)
             alert('Cocô registrado com sucesso!')
             await getRanking()
         } catch (error) {
             setErrorMessage('Erro ao registrar o cocô.')
-            console.error('Error posting poop:', error)
         } finally {
             setIsLoading(false)
         }
@@ -38,12 +36,10 @@ function Ranking() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            console.log(response.data)
             alert('Cocô descagado com sucesso!')
             await getRanking()
         } catch (error) {
             setErrorMessage('Erro ao descagar o cocô.')
-            console.error('Error deleting poop:', error)
         } finally {
             setIsLoading(false)
         }
@@ -56,11 +52,9 @@ function Ranking() {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            console.log(response.data)
             setPeople(response.data.ranking)
         } catch (error) {
             setErrorMessage('Erro ao carregar o ranking.')
-            console.error('Error fetching ranking:', error)
         } finally {
             setIsLoading(false)
         }

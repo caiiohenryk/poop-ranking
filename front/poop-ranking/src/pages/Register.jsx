@@ -25,12 +25,10 @@ function Register() {
 
         try {
             const response = await instance.post('/user/register', data)
-            console.log(response.data)
             alert('Cadastro realizado com sucesso!')
             navigate('/login')
         } catch (error) {
             setErrorMessage('Erro ao registrar. Por favor, tente novamente.')
-            console.error('Error registering:', error)
         } finally {
             setIsLoading(false)
         }
