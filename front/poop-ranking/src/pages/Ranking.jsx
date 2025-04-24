@@ -31,6 +31,24 @@ function Ranking() {
         }
     }
 
+    const unpoop = async () => {
+        try {
+            const response = await instance.delete(`/poop/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            console.log(response.data)
+            alert('Cocô descagado com sucesso!')
+            await getRanking()
+        } catch (error) {
+            setErrorMessage('Erro ao descagar o cocô.')
+            console.error('Error deleting poop:', error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     const getRanking = async () => {
         try {
             const response = await instance.get('/poop/ranking', {
@@ -60,10 +78,16 @@ function Ranking() {
 
             {token ? (
                 <>
-                    <button onClick={poop} className="cursor-pointer font-semibold text-gray-900">
-                        <img className='w-15' src="/poop.webp" alt="poop" />
-                        <p>cague!</p>
-                    </button>
+                    <div className='flex flex-row gap-9 items-center justify-center'>
+                        <button onClick={unpoop} className="cursor-pointer font-semibold text-gray-900">
+                            <img className='w-15' src="/paper.png" alt="paper" />
+                            <p>descague!</p>
+                        </button>
+                        <button onClick={poop} className="cursor-pointer font-semibold text-gray-900">
+                            <img className='w-15' src="/poop.webp" alt="poop" />
+                            <p>cague!</p>
+                        </button>
+                    </div>
 
                     <ul className="bg-white w-80 rounded-lg shadow p-6 divide-y divide-gray-200">
                         {isLoading ? (
