@@ -21,8 +21,25 @@ export class PoopController {
   }
 
   @Get('ranking')
+  @UseGuards(AuthGuard)
   async getRanking() {
-    return this.poopService.getRanking();
+    const ranking = await this.poopService.getRanking();
+    return {
+      message: 'Ranking retornado com sucesso!',
+      ranking: ranking,
+    };
   }
+
+  @UseGuards(AuthGuard)
+  @Get(':userId')
+  async getAllByUserId(@Param('userId') userId : string) {
+    const poops = await this.poopService.buscarTodos(userId);
+    return {
+      message: 'Busca de cagadas com sucesso!',
+      poops: poops
+    }
+  }
+
+
 
 }

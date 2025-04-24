@@ -11,6 +11,7 @@ export class Poop {
 
   @ManyToOne(()=> User, userId => userId.poops)
   @JoinColumn({name:'userId'})
+  @Column({type:'uuid'})
   public userId: string;
 
 }
