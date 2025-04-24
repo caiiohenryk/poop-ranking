@@ -2,7 +2,7 @@ import React from 'react'
 
 function RankCard(props) {
     return (
-        <li className="flex justify-between gap-x-6 py-5">
+        <li className="flex justify-between gap-x-24 py-5">
             <div className="flex min-w-0 gap-x-4">
                 <div className="min-w-0 flex-auto">
                     <p className="text-sm/6 font-semibold text-gray-900">{props.name}</p>
