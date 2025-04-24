@@ -27,7 +27,6 @@ import { PoopController } from "@poop/poop.controller";
         database: configService.get('DB_NAME'),
         entities: [User, Poop],
         synchronize: true, // Apenas para desenvolvimento!
-        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
       }),
       inject: [ConfigService],
     }),
