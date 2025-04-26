@@ -15,7 +15,7 @@ function Ranking() {
 
     const poop = async () => {
         try {
-            const response = await instance.post(`/poop/${userId}`, {}, {
+            await instance.post(`/poop/${userId}`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -29,21 +29,21 @@ function Ranking() {
         }
     }
 
-    const unpoop = async () => {
-        try {
-            const response = await instance.delete(`/poop/${userId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-            alert('Cocô descagado com sucesso!')
-            await getRanking()
-        } catch (error) {
-            setErrorMessage('Erro ao descagar o cocô.')
-        } finally {
-            setIsLoading(false)
-        }
-    }
+    // const unpoop = async () => {
+    //     try {
+    //         await instance.delete(`/poop/${userId}`, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         })
+    //         alert('Cocô descagado com sucesso!')
+    //         await getRanking()
+    //     } catch (error) {
+    //         setErrorMessage('Erro ao descagar o cocô.')
+    //     } finally {
+    //         setIsLoading(false)
+    //     }
+    // }
 
     const getRanking = async () => {
         try {
@@ -73,13 +73,13 @@ function Ranking() {
             {token ? (
                 <>
                     <div className='flex flex-row gap-9 items-center justify-center'>
-                        <button onClick={unpoop} className="cursor-pointer font-semibold text-gray-900">
+                        {/* <button onClick={unpoop} className="cursor-pointer font-semibold text-gray-900">
                             <img className='w-15' src="/paper.png" alt="paper" />
                             <p>descague!</p>
-                        </button>
-                        <button onClick={poop} className="cursor-pointer font-semibold text-gray-900">
+                        </button> */}
+                        <button onClick={poop} className={`cursor-pointer font-semibold text-gray-900 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={isLoading}>
                             <img className='w-15' src="/poop.webp" alt="poop" />
-                            <p>cague!</p>
+                            <p>{isLoading ? 'cagando...' : 'cague!'}</p>
                         </button>
                     </div>
 

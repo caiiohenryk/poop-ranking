@@ -109,7 +109,7 @@ function Register() {
                                 isLoading ? 'opacity-50 cursor-not-allowed' : ''
                             }`}
                         >
-                            {isLoading ? 'Carregando...' : 'registrar'}
+                            {isLoading ? 'carregando...' : 'registrar'}
                         </button>
                     </div>
                 </form>
