@@ -41,14 +41,14 @@ function Login() {
     }
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        <div className="flex h-screen flex-1 gap-10 flex-col items-center justify-center px-6 lg:px-8">
+            <div className="sm:w-full sm:max-w-sm -mt-10 md:mt-0">
+                <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     entre!
                 </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="sm:w-full sm:max-w-sm">
                 <form onSubmit={handleSubmit} className="space-y-6 bg-white p-5 rounded shadow-md">
                     <div>
                         <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">

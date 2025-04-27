@@ -40,9 +40,9 @@ function Register() {
     }
 
     return (
-        <div className="flex h-full flex-1 items-center flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        <div className="flex h-screen flex-1 items-center flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="sm:w-full sm:max-w-sm -mt-10 md:mt-0">
+                <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     cadastre-se!
                 </h2>
             </div>
