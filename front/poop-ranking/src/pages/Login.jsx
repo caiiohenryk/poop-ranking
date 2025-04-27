@@ -25,7 +25,7 @@ function Login() {
 
         try {
             const response = await instance.post('/auth/login', data)
-            sessionStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data.accessToken);
             alert('Login realizado com sucesso!')
             navigate('/')
         } catch (error) {
@@ -41,14 +41,14 @@ function Login() {
     }
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        <div className="flex h-screen flex-1 gap-10 flex-col items-center justify-center px-6 lg:px-8">
+            <div className="sm:w-full sm:max-w-sm -mt-10 md:mt-0">
+                <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     entre!
                 </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="sm:w-full sm:max-w-sm">
                 <form onSubmit={handleSubmit} className="space-y-6 bg-white p-5 rounded shadow-md">
                     <div>
                         <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
@@ -92,11 +92,10 @@ function Login() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className={`cursor-pointer flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${
-                                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-                            }`}
+                            className={`cursor-pointer flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+
                         >
-                            {isLoading ? 'Carregando...' : 'entrar'}
+                            {isLoading ? 'carregando...' : 'entrar'}
                         </button>
                     </div>
                 </form>
