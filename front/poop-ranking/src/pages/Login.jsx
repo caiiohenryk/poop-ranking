@@ -25,7 +25,7 @@ function Login() {
 
         try {
             const response = await instance.post('/auth/login', data)
-            sessionStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data.accessToken);
             alert('Login realizado com sucesso!')
             navigate('/')
         } catch (error) {

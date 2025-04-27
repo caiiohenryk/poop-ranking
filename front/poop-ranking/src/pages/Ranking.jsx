@@ -9,7 +9,7 @@ function Ranking() {
     const [errorMessage, setErrorMessage] = useState('')
     const [people, setPeople] = useState([])
 
-    const token = sessionStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
     const userId = getUserId(token)
 

@@ -24,7 +24,7 @@ function Register() {
         }
 
         try {
-            const response = await instance.post('/user/register', data)
+            await instance.post('/user/register', data)
             alert('Cadastro realizado com sucesso!')
             navigate('/login')
         } catch (error) {
