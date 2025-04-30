@@ -9,9 +9,13 @@ import { AuthController } from '@auth/auth.controller';
 import { PoopModule } from '@poop/poop.module';
 import { Poop } from "@poop/poop.model";
 import { PoopController } from "@poop/poop.controller";
+import { PingService } from "./ping.service";
+import { ScheduleModule } from "@nestjs/schedule";
+import { AppController } from "./app.controller";
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env'
@@ -34,7 +38,7 @@ import { PoopController } from "@poop/poop.controller";
     AuthModule,
     PoopModule
   ],
-  controllers: [UserController, AuthController, PoopController],
-  providers: [],
+  controllers: [UserController, AuthController, PoopController, AppController],
+  providers: [PingService],
 })
 export class AppModule {}

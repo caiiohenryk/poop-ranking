@@ -39,14 +39,4 @@ export class PoopController {
       poops: poops
     }
   }
-
-  @Get('ping')
-  async ping() {
-    return {
-      message:"Pong!"
-    }
-  }
-
-
-
 }
