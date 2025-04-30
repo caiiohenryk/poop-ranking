@@ -30,9 +30,22 @@ export class PoopService {
     return this.poopRepository
       .createQueryBuilder('poop')
       .select('poop.userId', 'userId')
-      .addSelect('COUNT(poop.id)', 'count') // Conta os registros por userId
-      .groupBy('poop.userId') // Agrupa por userId
-      .orderBy('count', 'DESC') // Ordena do maior para o menor
-      .getRawMany(); // Retorna os dados brutos (ex.: [{ userId: "asf214", count: "25" }])
+      .addSelect('user.nome', 'nome') // Adiciona o nome do usuário
+      .addSelect('COUNT(poop.id)', 'count')
+      .innerJoin('user', 'user', 'user.id = poop.userId') // Faz o JOIN com a tabela de usuários
+      .groupBy('poop.userId, user.nome') // Agrupa também pelo nome
+      .orderBy('count', 'DESC')
+      .getRawMany();
+  }
+
+  async buscarTodos(userId: string) {
+    try {
+      return await this.poopRepository.find({
+        where: { userId: userId }
+      });
+    } catch (error) {
+      console.error(error.message);
+      throw new NotFoundException("Erro ao buscar cagadas.");
+    }
   }
 }
